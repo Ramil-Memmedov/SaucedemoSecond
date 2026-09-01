@@ -1,30 +1,34 @@
-# SauceDemo Test Automation Framework
+# SauceDemo UI Automation Framework
 
-## 📌 Project Overview
+## Project Overview
 
-This project is a web UI test automation framework developed for testing the **SauceDemo** e-commerce application.
+This project is a UI test automation framework developed for testing the [SauceDemo](https://www.saucedemo.com/) web application.
 
-The framework is built using **Java, Selenium WebDriver, TestNG, Maven, Cucumber, and Allure** and follows the **Page Object Model (POM)** design pattern to improve code reusability, maintainability, and readability.
+The framework automates key user scenarios including login validation and shopping cart functionality using **Java, Selenium WebDriver, Cucumber, JUnit, TestNG, Maven, and Allure**.
 
-The project covers key user flows such as user authentication and shopping cart functionality.
+The project follows the **Page Object Model (POM)** design pattern to improve code maintainability, reusability, and readability.
 
 ---
 
-## 🛠️ Tech Stack
+## Technologies & Tools
 
-* **Java**
-* **Selenium WebDriver**
-* **TestNG**
-* **Cucumber**
+* **Java 17**
+* **Selenium WebDriver 4.29.0**
+* **Cucumber 7.15.0**
+* **JUnit 4.13.2**
+* **TestNG 7.12.0**
 * **Maven**
+* **WebDriverManager 5.7.0**
+* **Allure Report 2.29.1**
+* **SLF4J 2.0.16**
+* **Logback 1.5.12**
 * **Page Object Model (POM)**
-* **Allure Report**
+* **BDD / Gherkin**
 * **Git & GitHub**
-* **IntelliJ IDEA**
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 SaucedemoSecond
@@ -56,51 +60,90 @@ SaucedemoSecond
 └── README.md
 ```
 
----
-
-## 🧪 Test Coverage
-
-### 🔐 Login
-
-* User login functionality
-* Login scenarios using Cucumber feature files
-* Validation of login behavior
-
-### 🛒 Shopping Cart
-
-* Adding products to the shopping cart
-* Verifying cart functionality
-* Cart-related test scenarios
+The framework separates page objects, test classes, Cucumber feature files, and the test runner into dedicated directories.
 
 ---
 
-## 🏗️ Framework Architecture
+## Automated Test Scenarios
 
-The project follows the **Page Object Model (POM)** design pattern.
+### Login
 
-Page-specific elements and actions are separated from test logic, making the framework easier to maintain and extend.
+The login automation covers:
 
-### Page Objects
+* Successful login with valid credentials
+* Login with an invalid password
+* Login with a locked-out user
+* Verification of successful navigation to the Inventory page
+* Verification of login error messages
 
-* `BasePage` — common page functionality
-* `LoginPage` — login page elements and actions
-* `CartPage` — shopping cart elements and actions
+The scenarios are described using **Cucumber/Gherkin** syntax.
 
-### Test Layer
+### Shopping Cart
 
-* `LoginTest` — login-related test scenarios
-* `CartTest` — shopping cart test scenarios
+The cart automation covers:
 
-### BDD Layer
-
-Cucumber feature files are used to describe test scenarios in a readable format:
-
-* `login.feature`
-* `cart.feature`
+* Opening the Cart page
+* Verifying that the Cart page is displayed
+* Verifying that the expected product is present in the cart
 
 ---
 
-## ▶️ How to Run
+## Framework Design
+
+### Page Object Model
+
+The framework follows the **Page Object Model (POM)** design pattern.
+
+Page-specific classes contain:
+
+* Web element locators
+* Page-specific actions
+* Reusable methods
+
+Current page objects include:
+
+* `BasePage`
+* `LoginPage`
+* `CartPage`
+
+Separating page objects from test logic improves code readability and makes the framework easier to maintain and extend.
+
+---
+
+## BDD with Cucumber
+
+Test scenarios are written using **Gherkin syntax** and executed with Cucumber.
+
+Example:
+
+```gherkin
+Scenario: Successful login
+  Given User is on Login page
+  When User enters username "standard_user"
+  And User enters password "secret_sauce"
+  And User clicks Login button
+  Then User should be redirected to Inventory page
+```
+
+BDD provides a human-readable way to describe expected application behavior and test scenarios.
+
+---
+
+## Test Reporting
+
+The project is configured with **Allure Report** for test execution reporting.
+
+Allure results are generated in the Maven `target` directory and are excluded from version control using `.gitignore`.
+
+To view the report after test execution:
+
+```bash
+allure serve target/allure-results
+```
+
+---
+
+## How to Run
 
 ### 1. Clone the repository
 
@@ -116,45 +159,47 @@ cd SaucedemoSecond
 
 ### 3. Run the tests
 
-Using Maven:
-
 ```bash
 mvn clean test
 ```
 
----
+### 4. Open the Allure Report
 
-## 📊 Test Reporting
-
-The project uses **Allure Report** for test result visualization.
-
-After test execution, Allure results can be generated and viewed using:
+After the tests finish:
 
 ```bash
-allure serve allure-results
+allure serve target/allure-results
 ```
+
+> Make sure Maven and Allure CLI are installed and configured in your system PATH.
 
 ---
 
-## 🎯 Project Goals
+## Project Goals
 
 The main goals of this project are:
 
-* Practicing UI test automation with Selenium WebDriver
-* Applying the Page Object Model design pattern
-* Creating maintainable automated tests
-* Working with TestNG and Cucumber
-* Managing dependencies with Maven
-* Generating test execution reports with Allure
-* Using Git and GitHub for version control
+* Practice UI test automation with Selenium WebDriver
+* Apply the Page Object Model design pattern
+* Implement BDD using Cucumber and Gherkin
+* Automate positive and negative test scenarios
+* Work with Maven-based automation projects
+* Generate and analyze test execution reports
+* Practice Git and GitHub version control
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Ramil Məmmədov**
 
-QA Automation Engineer — Junior
+Junior QA Automation Engineer
 
-* GitHub: [Ramil-Memmedov](https://github.com/Ramil-Memmedov)
-* LinkedIn: [Ramil Məmmədov](https://www.linkedin.com/in/ramil-memmedov-150926316/)
+* GitHub: https://github.com/Ramil-Memmedov
+* LinkedIn: https://www.linkedin.com/in/ramil-memmedov-150926316/
+
+---
+
+## Repository
+
+[View this project on GitHub](https://github.com/Ramil-Memmedov/SaucedemoSecond)
