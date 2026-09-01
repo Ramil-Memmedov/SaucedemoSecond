@@ -6,7 +6,7 @@ This project is a UI test automation framework developed for testing the [SauceD
 
 The framework automates key user scenarios including login validation and shopping cart functionality using **Java, Selenium WebDriver, Cucumber, JUnit, TestNG, Maven, and Allure**.
 
-The project follows the **Page Object Model (POM)** design pattern to improve code maintainability, reusability, and readability.
+The project follows the **Page Object Model (POM)** design pattern to improve test maintainability, reusability, and readability.
 
 ---
 
@@ -22,9 +22,11 @@ The project follows the **Page Object Model (POM)** design pattern to improve co
 * **Allure Report 2.29.1**
 * **SLF4J 2.0.16**
 * **Logback 1.5.12**
+* **Git & GitHub**
 * **Page Object Model (POM)**
 * **BDD / Gherkin**
-* **Git & GitHub**
+
+Project dependencies and build configuration are managed using Maven.
 
 ---
 
@@ -135,11 +137,19 @@ The project is configured with **Allure Report** for test execution reporting.
 
 Allure results are generated in the Maven `target` directory and are excluded from version control using `.gitignore`.
 
-To view the report after test execution:
+After running the tests, the results are available in:
+
+```text
+target/allure-results
+```
+
+To view the report:
 
 ```bash
 allure serve target/allure-results
 ```
+
+Make sure Allure CLI is installed and configured in your system PATH.
 
 ---
 
@@ -171,8 +181,6 @@ After the tests finish:
 allure serve target/allure-results
 ```
 
-> Make sure Maven and Allure CLI are installed and configured in your system PATH.
-
 ---
 
 ## Project Goals
@@ -180,6 +188,7 @@ allure serve target/allure-results
 The main goals of this project are:
 
 * Practice UI test automation with Selenium WebDriver
+* Build a maintainable automation framework
 * Apply the Page Object Model design pattern
 * Implement BDD using Cucumber and Gherkin
 * Automate positive and negative test scenarios
